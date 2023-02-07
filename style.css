@@ -133,6 +133,10 @@ p {
 header {
   margin-left: 40%;
 }
+p,
+h1 {
+  cursor: grab;
+}
 h1 {
   color: #000000;
   font-size: 5rem;
@@ -140,11 +144,49 @@ h1 {
     Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   letter-spacing: 3px;
   text-transform: uppercase;
-  cursor: grab;
 }
+p {
+  display: block;
+  padding: 0.5rem;
+  text-transform: uppercase;
+  font-size: 2rem;
+  color: #af0909;
+  font-weight: 700;
+  transition: 0.3s;
+  transition-delay: 0.2s;
+  margin-left: 10vw;
+}
+p:hover {
+  color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-20px);
+  transition-delay: 0;
+}
+p::before {
+  content: attr(data-text);
+  position: absolute;
+  bottom: -10px;
+  pointer-events: none;
+  z-index: 1;
+  margin-left: 3px;
+
+  font-size: 0.5em;
+  color: #000000;
+  font-weight: 500;
+  letter-spacing: 100px;
+  opacity: 0;
+  transition: 0.5s;
+  text-shadow: 0 0 10px #ff903b, 0 0 10px #f73403, 0 0 10px #ff0202;
+}
+
+p:hover::before {
+  letter-spacing: 6px;
+  opacity: 1;
+  transition-delay: 0.25s;
+}
+
 /* section */
 .section {
-  padding: 5rem 0;
+  padding: 2rem 0;
   width: 90vw;
   margin: 0 auto;
   max-width: 1170px;
