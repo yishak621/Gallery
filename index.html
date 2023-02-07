@@ -7,8 +7,16 @@
     <title>Gallery</title>
 
     <link rel="stylesheet" href="style.css" />
+    <!--font awesome-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
   </head>
   <body>
+    <header>
+      <h1 data-value="Gallery">Gallery</h1>
+    </header>
     <!--NATURE-->
     <section class="section nature">
       <img
@@ -74,15 +82,15 @@
     <!--modal-->
     <div class="modal">
       <button class="close-btn">
-        <img class="fas" src="./images/times-circle.svg" alt="" />
+        <i class="fas fa-times"></i>
       </button>
       <!--prev and next button-->
       <div class="modal-content">
         <button class="prev-btn">
-          <img class="fase" src="./images/chevron-left.svg" alt="" />
+          <i class="fas fa-plus"></i>
         </button>
         <button class="next-btn">
-          <img class="fase" src="./images/chevron-right.svg" alt="" />
+          <i class="fas fa-plus"></i>
         </button>
         <!--content>this are place holders this will controll by javascript dynamically----->
         <img src="./images/city-1.jpeg" class="main-img" alt="" />
@@ -126,6 +134,6 @@
         </div>
       </div>
     </div>
-    <script src="new-add.js"></script>
+    <script src="new-class.js"></script>
   </body>
 </html>

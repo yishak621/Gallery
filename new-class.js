@@ -6,6 +6,26 @@ function getElement(selection) {
   }
   throw new Error(`yo check the ${selection} is correctly typed`);
 }
+//rotate
+const prevBtn = document.querySelector('.prev-btn');
+const nextBtn = document.querySelector('.next-btn');
+const plusIcon = document.querySelectorAll('.fa-plus');
+
+let currentDegree = 0;
+prevBtn.addEventListener('click', function () {
+  currentDegree -= 90;
+  plusIcon.forEach((icon) => {
+    icon.style.transform = `rotate(${currentDegree}deg)`;
+  });
+});
+
+nextBtn.addEventListener('click', function () {
+  currentDegree += 90;
+  plusIcon.forEach((icon) => {
+    icon.style.transform = `rotate(${currentDegree}deg)`;
+  });
+});
+
 //CONSTRUCTOR FUNCTION
 class Gallery {
   constructor(element) {
@@ -21,6 +41,7 @@ class Gallery {
     this.closeBtn = getElement('.close-btn');
     this.nextBtn = getElement('.next-btn');
     this.prevBtn = getElement('.prev-btn');
+
     //bind fucntions
     this.closeModal = this.closeModal.bind(this);
     this.nextImage = this.nextImage.bind(this);
@@ -110,3 +131,34 @@ class Gallery {
 //INVOKING
 const nature = new Gallery(getElement('.nature'));
 const city = new Gallery(getElement('.city'));
+
+//text hacker effect
+const header = document.querySelector('h1');
+const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+header.onmouseover = (event) => {
+  let iterations = 0;
+
+  const interval = setInterval(() => {
+    //keep track of each interval and return text
+    event.target.innerText = event.target.innerText
+      .split('')
+      .map((letter, index) => {
+        //we use letter placeholder just to iterate all items-but the index use
+
+        //if index is <1
+        if (index < iterations) {
+          return event.target.dataset.value[index]; //it uses the word index from the e.target and then use that number to display each dataset values
+        }
+        return letters[Math.floor(Math.random() * 26)]; //this is just used to randomly acess the A-Z letters
+      })
+      .join('');
+
+    //if >=9
+    if (iterations >= event.target.dataset.value.length) {
+      clearInterval(interval);
+    }
+    //iterate each time
+    iterations += 1 / 2;
+  }, 100);
+};
